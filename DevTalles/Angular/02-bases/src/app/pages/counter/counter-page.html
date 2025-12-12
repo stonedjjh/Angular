@@ -1,0 +1,13 @@
+<ng-container>
+  <H1>Hola Mundo</H1>
+  <H2>CounterComponent Page 2</H2>
+  <!-- Mostramos el valor del contador usando {{}} -->
+  <p>Counter: {{ counter }}</p>
+  <p>Counter Signal: {{ counterSignal() }}</p>
+  <!-- Botones para incrementar y decrementar el contador -->
+  <!-- Usando métodos para cambiar el valor del contador 
+    este se definen colocando el metodo entre () -->
+  <button (click)="increaseBy(1)">+1</button>
+  <button (click)="decreaseBy(1)">-1</button>
+  <button (click)="resetCounter()">Reset</button>
+</ng-container>
