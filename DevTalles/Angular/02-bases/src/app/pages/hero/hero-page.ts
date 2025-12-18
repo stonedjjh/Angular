@@ -28,6 +28,7 @@ export class HeroPage {
   //     return `Super Heroe: ${this.name().toUpperCase()} - Edad: ${this.age()}`;
   //   }
 
+
   updateAge(newAge: number) {
     this.age.set(newAge);
   }

@@ -11,4 +11,9 @@ export const routes: Routes = [
     path: 'hero',
     component: HeroPage,
   },
+  {
+    //Si no encuentra la ruta Redirigimos al CounterPage
+    path: '**',
+    redirectTo: '',
+  },
 ];
