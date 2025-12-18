@@ -15,7 +15,8 @@
 | Solo puedo correr código de TypeScript en mis aplicaciones de Angular | Mito      |
 |                                                                       | Verdad    |
 
-### Sección 3 del Modulo
+### Sección 3 Bases de TypeScript - Recomendado
+
 
 Esta sección es un repaso de typescript y otros conceptos claves necesarios para Angular
 
@@ -30,7 +31,7 @@ npm create vite@latest
 - Install with npm and start now? **Yes**
 -
 
-### Sección 4 del Modulo
+### Sección 4 Angular
 
 - En la carpeta src es en donde desarrollaremos la mayoria de nuestro codigo
 - **main.ts** es el punto de entrada de nuestra aplicacion
@@ -203,3 +204,56 @@ export class HeroPage {
   });
 }
 ```
+
+### Sección 5 Expandir bases
+
+En esta sección veremos:
+
+- RouterLink
+- RouterLink Active
+- Nuevo control flow
+- @for
+- @if
+- ngClass - ngStyle - Alternativas
+- Comunicación entre componentes
+- Inputs / outputs (Como señales)
+- Servicios en Angular
+- Efectos y LocalStorage
+- LinkedSignal
+- HashRouter
+- Despliegues
+
+#### Creación de un componente
+
+Para crea un componente usando la cli de Angular usamos el comando `ng g c` seguido del nombre del componente.
+o `ng g component nombre-del-componente`
+
+ejemplo
+
+```bash
+ng g component navbar
+```
+
+#### RouterLink
+
+En Angular, un routerLink es una directiva que se utiliza para vincular elementos del HTML (como enlaces `<a>` o botones) con las rutas definidas en tu aplicación.
+
+A diferencia del atributo tradicional href de HTML, routerLink permite la navegación sin recargar la página, lo que es fundamental para mantener la experiencia de una Single Page Application (SPA).
+
+##### Características principales
+
+Navegación fluida: Al hacer clic, Angular intercepta el evento, cambia la URL en la barra de direcciones y carga el componente correspondiente sin realizar una nueva petición al servidor para descargar todo el HTML.
+
+Sintaxis versátil: Puedes pasarle una cadena de texto simple para rutas estáticas o un arreglo para rutas con parámetros dinámicos.
+
+Gestión de estilos: Suele utilizarse junto con la directiva routerLinkActive para aplicar automáticamente una clase de CSS (como active) al enlace cuando su ruta coincide con la URL actual.
+
+Ejemplos comunes:
+
+- Ruta estática:
+
+`<a routerLink="/contacto">Ir a Contacto</a>`
+
+- Ruta dinámica (con parámetros):
+
+`<a [routerLink]="['/perfil', usuarioId]">Ver Perfil</a>`
