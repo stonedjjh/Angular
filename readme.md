@@ -18,6 +18,13 @@
 - Colocar ejercicios y guías dentro de DevTalles en las subcarpetas indicadas.
 - Para nuevos cursos, crear una entrada en este README y un repositorio separado para el curso correspondiente.
 
+## Lenguajes y Herramientas usadas
+
+![JavaScript](https://ziadoua.github.io/m3-Markdown-Badges/badges/Javascript/javascript3.svg)
+![Angular](https://ziadoua.github.io/m3-Markdown-Badges/badges/Angular/angular1.svg)
+![VisualStudioCode](https://ziadoua.github.io/m3-Markdown-Badges/badges/VisualStudioCode/visualstudiocode1.svg)
+![Vite](https://ziadoua.github.io/m3-Markdown-Badges/badges/ViteJS/vitejs1.svg)
+
 ## Contribuir
 
 - Añadir nuevas notas en /notes.
