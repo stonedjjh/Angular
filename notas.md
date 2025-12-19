@@ -257,3 +257,66 @@ Ejemplos comunes:
 - Ruta dinámica (con parámetros):
 
 `<a [routerLink]="['/perfil', usuarioId]">Ver Perfil</a>`
+
+#### RouterLinkActive
+
+En Angular, la directiva routerLinkActive se utiliza para añadir una o más clases CSS a un elemento HTML de forma automática cuando la ruta vinculada a su routerLink está activa.
+
+Su función principal es mejorar la experiencia de usuario (UX) proporcionando retroalimentación visual, indicándole al usuario en qué sección de la aplicación se encuentra actualmente (por ejemplo, resaltando una opción en un menú de navegación).
+
+##### ¿Cómo funciona?
+
+1. **Sincronización con el Router**: Angular monitorea constantemente la URL actual del navegador.
+
+2. **Detección de Coincidencia**: Compara la ruta activa con el valor definido en el routerLink del elemento.
+
+3. **Aplicación de Estilos**: Si coinciden, aplica la clase CSS que hayas especificado (comúnmente una clase llamada active o selected).
+
+Ejemplo básico de implementación
+
+```HTML
+
+<nav>
+  <a routerLink="/inicio" routerLinkActive="clase-activa">Inicio</a>
+  
+  <a routerLink="/productos" routerLinkActive="clase-activa">Productos</a>
+</nav>
+
+```
+
+##### Características avanzadas
+
+- Múltiples clases: Puedes pasar una lista de clases separadas por espacios: routerLinkActive="clase1 clase2".
+
+- En elementos contenedores: Puedes poner la directiva en un elemento padre (como un `<li>`) y Angular aplicará la clase al padre si el `<a>` que está dentro tiene la ruta activa.
+
+- routerLinkActiveOptions: Por defecto, Angular activa la clase si la URL actual empieza por el link definido. Para que solo se active si la coincidencia es exacta, se usa:
+
+```HTML
+
+<a routerLink="/inicio" 
+   [routerLinkActiveOptions]="{ exact: true }" 
+   routerLinkActive="active">Inicio</a>
+```
+
+#### Estilos dentro del componente
+
+Dentro de nuestro comoponente en su html podemos colocar estilos, no es lo recomendable pero se puede hacer.
+
+```html
+<style>
+nav{
+  display: flex;
+  justify-content: space-arround;
+  background-color: #212121;
+  color: white;
+  padding: 10px;
+}
+nav a {
+  color: white;
+  text-decoration: none;
+}
+</style>
+```
+
+para ver la aplicación de este ejemplo lo podemos verificar en `02-bases\src\app\components\shared\navbar\navbar.html`
