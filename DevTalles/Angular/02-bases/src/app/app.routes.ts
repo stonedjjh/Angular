@@ -14,12 +14,12 @@ export const routes: Routes = [
     component: HeroPage,
   },
   {
+    path: 'dragonball',
+    component: DragonBallPage,
+  },
+  {
     //Si no encuentra la ruta Redirigimos al CounterPage
     path: '**',
     redirectTo: '',
   },
-  {
-    path: 'dragonball',
-    component: DragonBallPage,
-  }
 ];

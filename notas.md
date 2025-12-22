@@ -320,3 +320,104 @@ nav a {
 ```
 
 para ver la aplicación de este ejemplo lo podemos verificar en `02-bases\src\app\components\shared\navbar\navbar.html`
+
+#### Directiva @for (Control Flow)
+
+Se utiliza para iterar sobre una colección de datos (arreglos) y renderizar elementos repetitivos en la plantilla. Es la evolución moderna del antiguo `*ngFor`.
+
+Sintaxis Básica
+
+```HTML
+<<ul>
+  @for (item of items; track item.id) {
+    <li>{{ item.name }}</li>
+  } @empty {
+    <li>No hay elementos en la lista</li>
+  }
+</ul>
+```
+
+##### Elementos Clave
+
+- track: Es obligatorio. Se utiliza para darle a Angular un identificador único para cada elemento. Esto ayuda al framework a saber exactamente qué elemento cambió, se agregó o se eliminó, optimizando drásticamente el rendimiento del renderizado.
+
+- @empty: Es un bloque opcional que se muestra automáticamente cuando el arreglo está vacío (items.length === 0).
+
+##### Variables Contextuales
+
+Dentro del @for, puedes acceder a variables útiles del ciclo de vida de la iteración:
+
+|Variable|Descripción|
+|$index|El índice del elemento actual (0, 1, 2...).|
+|$first|True si es el primer elemento.|
+|$last|True si es el último elemento.|
+|$count|El número total de elementos en la colección.|
+
+###### Ejemplo con índice
+
+```HTML
+@for (user of users; track user.id) {
+  <p>Usuario #{{ $index + 1 }}: {{ user.name }}</p>
+}
+```
+
+> [!IMPORTANT]A diferencia de las directivas antiguas como *ngFor, la nueva sintax
+is @for no necesita ser incluida en el arreglo imports de tu @Component. Angular la reconoce automáticamente en todas las plantillas.
+
+#### Directiva ngClass
+
+Es una directiva de atributo que permite añadir o eliminar clases de CSS de un elemento HTML de forma dinámica, basándose en expresiones lógicas o el estado de variables en el componente.
+
+##### Formas de uso principal
+
+##### 1. Objeto (La más utilizada)
+
+La llave es el **nombre de la clase CSS** y el valor es la **condición booleana**. Si la condición es `true`, la clase se añade; si es `false`, se quita.
+
+```html
+<div [ngClass]="{
+    'text-success': isOnline,
+    'text-danger': !isOnline,
+    'font-bold': count > 10
+  }">
+  Estado del servidor
+</div>
+```
+
+#### Directiva @if (Control Flow)
+
+Es la nueva directiva de flujo de control (introducida en Angular 17) que permite mostrar u ocultar elementos del DOM de forma condicional. Sustituye a la antigua directiva estructural `*ngIf`.
+
+##### Sintaxis Básica (If / Else)
+
+```html
+@if (isLoggedIn) {
+  <p>Bienvenido de nuevo, usuario.</p>
+} @else {
+  <button>Iniciar sesión</button>
+}
+```
+
+##### Sintaxis Completa (Else If)
+
+Permite manejar múltiples condiciones de forma mucho más limpia que las versiones anteriores.
+
+```html
+@if (role === 'admin') {
+  <p>Panel de Control de Administrador</p>
+} @else if (role === 'editor') {
+  <p>Panel de Edición de Contenido</p>
+} @else {
+  <p>Panel de Usuario Estándar</p>
+}
+```
+
+##### Referencia de resultados (As)
+
+También puedes guardar el resultado de una expresión (como un Observable con el pipe async) en una variable local dentro del bloque:
+
+```html
+@if (userProfile$ | async; as user) {
+  <p>Nombre: {{ user.name }}</p>
+}
+```

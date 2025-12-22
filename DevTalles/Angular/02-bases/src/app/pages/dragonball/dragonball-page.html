@@ -1,1 +1,67 @@
-<h1>Dragon Ball Z</h1>
+<h1>DragonBall Page</h1>
+<hr>
+
+<section class="row">
+
+  <div class="col-12 col-sm-6">
+    <h3>Agregar: {{name()}}</h3>
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Nombre del personaje"
+      [value]="name()"
+      (change)="name.set(txtname.value)"
+      #txtname
+      >
+
+    <h3>Poder: {{power()}}</h3>
+    <input
+      type="number"
+      class="form-control mt-2"
+      placeholder="Poder"
+      [value]="power()"
+      (change)="power.set(+txtPower.value)"
+      #txtPower
+      >
+    <button (click)="addCharacter()" class="mt-2 btn btn-primary">Agregar</button>
+  </div>
+
+  <div class="col-12 col-sm-6">
+    <h3>Listado</h3>
+    <ol>
+      @for (character of characters(); track character.id)
+      {
+        @if(character.power > 500  )
+        {
+
+          <li>
+            <span>{{character.name}}</span>
+            <!-- <strong class="text-danger"> ({{character.power}})</strong> -->
+            <!-- Uso de clase condicional con ngClass -->
+            <strong [ngClass]="powerClasses()">
+            <!-- [class.text-danger]="character.power > 9000"
+            [class.text-primary]="character.power < 9000" -->
+
+              >({{character.power}})</strong>
+
+          </li>
+        }
+        @else {
+          <li>
+            <span>{{character.name}}</span>
+            <!-- <strong class="text-danger"> ({{character.power}})</strong> -->
+            <!-- Uso de clase condicional con ngClass -->
+            <strong>
+            <!-- [class.text-danger]="character.power > 9000"
+            [class.text-primary]="character.power < 9000" -->
+
+             >Tu nivel de pelea es de insectos</strong>
+
+          </li>
+
+        }
+      }
+    </ol>
+  </div>
+
+</section>
